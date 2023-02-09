@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    MyBatis映射文件
+        - namespace:指定当前映射文件的命名空间(等同于管理类的包)
+    mapper:下主要用于配置SQL映射(配置SQL语句)
+-->
+<mapper namespace="com.jiazhong.mapper.ModuleMapper">
+    <select id="getModuleByAccountId" resultType="com.jiazhong.model.ModuleDto">
+        SELECT
+            p.module_id p_id,
+            p.module_name p_name,
+            m.module_id	m_id,
+            m.module_name	m_name,
+            m.module_url	m_url
+        FROM
+            tbl_account a
+                INNER JOIN tbl_account_role ar ON a.account_id=ar.account_id
+                INNER JOIN tbl_role r ON ar.role_id=r.role_id
+                INNER JOIN tbl_role_module rm ON r.role_id=rm.role_id
+                INNER JOIN tbl_module p ON rm.module_id=p.module_id
+                INNER JOIN tbl_module m ON p.module_id=m.parent_module_id
+        WHERE
+            m.module_is_menu=1
+          AND
+            a.account_id=#{account_id}
+        ORDER BY p_id ASC
+    </select>
+</mapper>

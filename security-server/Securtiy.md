@@ -1,0 +1,7 @@
+###Security常见异常
+UsernameNotFoundException:账户名不存在异常
+BadCredentialsException:失败的凭证异常(密码错误)
+LockedException:账户被锁定异常
+DisabledException:账户被禁用异常
+AccountExpiredException:账户已过期异常
+CredentialsExpiredException:凭证已过期异常

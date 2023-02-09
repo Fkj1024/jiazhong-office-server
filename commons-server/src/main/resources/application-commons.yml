@@ -1,0 +1,36 @@
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jiazhong-office?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    # Druid数据库连接池配置
+    druid:
+      max-active: 1000
+      min-idle: 10
+      max-wait: 1000
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 20
+        max-wait: 200
+        min-idle: 5
+
+# MyBatis-plus配置
+mybatis-plus:
+  configuration:
+#    # 禁用驼峰命名
+    map-underscore-to-camel-case: false
+#    # 设置MyBatisPlus的日志输出
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+#      # 全局表前缀设置
+      table-prefix: tbl_
+#      # 全局配置主键生成策略为自动增长
+      id-type: auto
+  mapper-locations: classpath*:/mapper/**/*.xml

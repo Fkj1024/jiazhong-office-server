@@ -1,0 +1,5 @@
+# 项目排除路径
+/commons-server/target/
+/market-server/target/
+/rbac-server/target/
+/security-server/target/

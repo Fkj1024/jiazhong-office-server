@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!--
+		配置当前项目的子模块
+	-->
+	<modules>
+		<module>commons-server</module>
+		<module>security-server</module>
+        <module>rbac-server</module>
+        <module>market-server</module>
+    </modules>
+
+	<!--
+		父项目
+	-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<!--
+		指定当前项目的打包方式为pom
+	-->
+	<packaging>pom</packaging>
+	<!--
+		当前项目描述
+	-->
+	<groupId>com.jiazhong</groupId>
+	<artifactId>jiazhong-office-server</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>jiazhong-office-server</name>
+
+	<!--
+		自定义属性列表
+	-->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<!--定义版本号-->
+		<junit.version>4.13.2</junit.version>
+		<mysql.version>8.0.26</mysql.version>
+		<mybatis-plus.version>3.5.2</mybatis-plus.version>
+		<druid.version>1.2.8</druid.version>
+		<fast-json.version>2.0.9</fast-json.version>
+		<spring-boot-redis.version>2.7.0</spring-boot-redis.version>
+		<spring-boot-security.version>2.7.2</spring-boot-security.version>
+		<jjwt.version>0.11.2</jjwt.version>
+	</properties>
+
+	<!--
+		dependencyManagement里面设置的依赖，子项目可以有选择的继承
+	-->
+	<dependencyManagement>
+		<dependencies>
+			<!--spring-security-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-security</artifactId>
+				<version>${spring-boot-security.version}</version>
+			</dependency>
+
+
+			<!--mysql-->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+
+			<!--druid-->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+
+			<!--mybatis-plus-->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<!--引用版本-->
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- jwt依赖包:jjwt-impl -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-impl</artifactId>
+				<version>${jjwt.version}</version>
+
+			</dependency>
+
+			<!-- jwt依赖包:jjwt-api -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-api</artifactId>
+				<version>${jjwt.version}</version>
+			</dependency>
+
+			<!-- jwt依赖包:jjwt-jackson -->
+			<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${jjwt.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<!--
+		dependencies里面设置的依赖包，子项目必须继承
+	-->
+	<dependencies>
+		<!--
+			springBoot-web
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!--
+                    springBoot-devtools
+                -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!--springBootRedis-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<version>${spring-boot-redis.version}</version>
+		</dependency>
+		<!--lombok-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+
+		<!--fast-json-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fast-json.version}</version>
+		</dependency>
+
+
+
+
+
+		<!--springBoot-test-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+
+</project>
